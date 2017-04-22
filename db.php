@@ -5,30 +5,9 @@
     Date: April 2017
 */
 
-// function to connect to the database
-function dbConnect(){
-    $serverName = 'gator4186.hostgator.com';
-    $uName = 'millifly_feuser';
-    $pWord = '<9sQ4*Ps4';
-    $db = 'millifly_feapply';
 
-    try{$connPDO = new PDO("mysql:host=$serverName;dbname=$db", $uName, $pWord);}
-    catch (PDOException $error)
-    {
-        die('Connection failed:'.$error->getMessage());
-    }
 
-    return $connPDO;
-    // $connPDO = new PDO("mysql:host=$serverName;dbname=$db", $uName, $pWord);
-
-    //     if(!$myPDO){
-    //         die("Failed to connect");
-    //     }
-
-    //     echo "Connection successful";
-
-}
-
+require_once ("fePegasusDBconn.php");
 
 //method to execute a query - the SQL statement to be executed, is passed to it
 
@@ -48,7 +27,7 @@ function executeQuery($query)
             {
 
                 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);  //retreive the rows as an associative array
-                            
+
             }
 
 //Uncomment these 4 lines to display $results
