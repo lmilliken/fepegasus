@@ -48,7 +48,7 @@ function executeQuery($query)
             {
 
                 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);  //retreive the rows as an associative array
-                                echo 'ok here';
+                            
             }
 
 //Uncomment these 4 lines to display $results

@@ -25,8 +25,8 @@
 <label>Please choose a proposal to review</label>
 <br>
 
- <select name="ratingpk" id="rating">
-      <option value=""></option>
+ <select style="max-width: 500px" onchange="showProposal(this.value)" class="form-control" name="proposals" id="proposals">
+      <option  value=""></option>
           <?php
           	require_once ("db.php");
 	        $proposals = getProposals();
@@ -38,9 +38,42 @@
           ?>
    </select>
 
+<br>
+	<div id="txtHint"><p style="margin-left: 5px">Proposal information will be listed here...</p></div>
 </div>
 
+
+
 <script type="text/javascript">
+
+function showProposal(str) {
+
+	//$('#txtHint').text(str)
+    if (str == "") {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    } else { 
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("txtHint").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","getThisProposal.php?email="+str,true);
+        xmlhttp.send();
+    }
+}
+
+
+
+
+
 					$(document).ready(function(){
 				    	$.ajax({
 			                type: 'GET',
@@ -63,7 +96,7 @@
 			                }
 				       });
 					});
-			</script>
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>	
 </body>
