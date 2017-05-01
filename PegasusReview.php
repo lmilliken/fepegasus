@@ -14,8 +14,10 @@
 
 <div class="container">
 
-<p id="EmailAddress"></p>
-
+<label id="reviewer">Reviewer: </label>
+<br>
+<label id="EmailAddress"></label><label id=rLastName></label><label id=rFirstName></label>
+<br>
 <label>Completed reviews:</label>
 <br>
 <br>
@@ -39,7 +41,9 @@
    </select>
 
 <br>
-	<div id="txtHint"><p style="margin-left: 5px">Proposal information will be listed here...</p></div>
+<div style="border: 2px solid red; border-radius: 5px; padding: 10px">
+	<div id="txtHint"><p>Proposal information and review form will be listed here...</p></div>
+</div>
 </div>
 
 
@@ -50,7 +54,7 @@ function showProposal(str) {
 
 	//$('#txtHint').text(str)
     if (str == "") {
-        document.getElementById("txtHint").innerHTML = "";
+        document.getElementById("txtHint").innerHTML = "Proposal information and review form will be listed here...";
         return;
     } else { 
         if (window.XMLHttpRequest) {
@@ -88,8 +92,13 @@ function showProposal(str) {
 			                success: function (result) {
 			                    $("#fullname").val(result.FirstName + ' ' + result.LastName	)
 			                    $("#EmailAddress").val(result.EmailAddress)
-			                    $("#EmailAddress").text(result.EmailAddress)
+			                    
 			                    $("#ProfileLink").val("http://network.futureearth.org/network/members/profile?UserKey=" + result.ContactKey)
+			                    $("#reviewer").append(result.LastName + ', ' + result.FirstName)
+			                    
+			                    $("#EmailAddress").text(result.EmailAddress)
+			                    $("#rLastName").text(result.LastName)
+			                    $("#rFirstName").text(result.FirstName)
 			                },
 			                error: function (error) {
 			                    alert('Call failed.');
@@ -97,7 +106,7 @@ function showProposal(str) {
 				       });
 					});
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>	
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ --><script src="js/bootstrap.min.js"></script>	
 </body>
 </html>
