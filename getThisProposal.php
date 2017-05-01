@@ -7,28 +7,46 @@
 
 require_once ("db.php");
 
-$email = ($_GET['email']);
+$pEmail = ($_GET['pemail']);
 
-$query = "SELECT * FROM pegasusapplications WHERE email = '".$email."'";
+// $rLastName = ($_GET['lname']);
+// $rFirstName = ($_GET['fname']);
+// $rEmail = ($_GET['remail']);
+$thisProposal = ($_GET['proposal']);
+
+$query = "SELECT * FROM pegasusapplications WHERE email = '".$pEmail."'";
 
 $result = executeQuery($query);
 
 
 echo '<p>';
 
+echo '<form method="post" onsubmit="submitReview()" action="submitReview.php">';
 foreach ($result as $proposal)
               {
                   extract($proposal); //extract the array elements
-                  echo  '<label>Proposal</label><br><strong><a target="_blank" href="' .$profilelink . '">' . $lastname . ', ' . $firstname . '</a></strong>'. ': ';
+                  echo  '<label>Proposal</label><br>';
+                  echo '<strong><a target="_blank" href="' .$profilelink . '">' . $lastname . ', ' . $firstname . '</a></strong>'. ': ';
                   echo  '<a target="_blank" href="' .$proposal . '">' . $proposaltitle . '</a> ';
                   echo '<br>';
                   echo $hostinstitution . ', ' . $hostcountry ;
+
+                  echo '<br>';
               };
 
 echo "</p>";
 
+
+
+
+// echo '<input name="rlname" value=' . $lastName . '>';
+// echo '<input name="rfname" value=' . $firstName . '>';
+// echo '<input name="remail" value=' . $rEmail . '>';
+echo '<p>' . $thisProposal . '</>';
+
+
 echo <<<FORM
-<form action="/submitreview.php">
+<br>
 <label>Ratings</label>
 <table class="table table-striped">
   <thead>
@@ -46,10 +64,10 @@ echo <<<FORM
  <tr class="odd">
   <td class="">The technical excellence and feasibility of planning and executing the Research Plan within the proposed budget and time constraints (50%)</td>
     <td class="">
-    <input type="radio" id="technical-execellence-feasbility" name="technical-execellence-feasbility" value="10" class="form-radio"></td>
+    <input type="radio" id="technical-execellence-feasbility" name="technical-execellence-feasbility" value="10" class="form-radio" ></td>
     
     <td class="">
-    <input type="radio" id="technical-execellence-feasbility" name="technical-execellence-feasbility" value="8" class="form-radio"></td>
+    <input type="radio" id="technical-execellence-feasbility" name="technical-execellence-feasbility" value="8" class="form-radio" ></td>
     
     <td class="">
     <input type="radio" id="technical-execellence-feasbility" name="technical-execellence-feasbility" value="6" class="form-radio"></td>
@@ -65,7 +83,7 @@ echo <<<FORM
  <tr class="even">
  <td class="">The interdisciplinary design and strength of the team, depth and breadth of collaboration across disciplines, countries, and sectors of society (25%)</td>
     <td class="">
-    <input type="radio" id="interdisciplinary" name="interdisciplinary"" value="5" class="form-radio"></td>
+    <input type="radio" id="interdisciplinary" name="interdisciplinary"" value="5" class="form-radio" ></td>
     
     <td class="">
     <input type="radio" id="interdisciplinary" name="interdisciplinary" value="4" class="form-radio"></td>
@@ -84,7 +102,7 @@ echo <<<FORM
  <td class="">The potential for the research to lead to significant advances within the thematic areas outlined above and relevance to the Future Earth Vison and Key Challenge on Natural
 Assets (25%)</td>
     <td class="">
-    <input type="radio" id="potential" name="potential" value="5" class="form-radio"></td>
+    <input type="radio" id="potential" name="potential" value="5" class="form-radio" ></td>
     
     <td class="">
     <input type="radio" id="potential" name="potential" value="4" class="form-radio"></td>
@@ -119,7 +137,7 @@ Assets (25%)</td>
  <tr class="odd">
   <td class="">Would you recommend this proposal for funding?</td>
     <td class="">
-    <input type="radio" id="recommendation" name="recommendation" value="3" class="form-radio"></td>
+    <input type="radio" id="recommendation" name="recommendation" value="3" class="form-radio" ></td>
     
     <td class="">
     <input type="radio" id="recommendation" name="recommendation" value="2" class="form-radio"></td>
