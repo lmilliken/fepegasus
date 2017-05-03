@@ -36,6 +36,9 @@ function executeQuery($query)
        // print_r($results);
        // echo '</pre>';
        // die;
+
+
+
        
 //call dbDisconnect() method to close the connection
 
@@ -51,6 +54,17 @@ function executeQuery($query)
         die ('Query failed: ' . $e->getMessage());
     }
 }
+
+
+function executeQuery2($query)
+{
+    // call the dbConnect function
+
+    $conn = dbConnect();
+
+    $conn->query($query);
+
+            }
 
 function getProposals()
 {

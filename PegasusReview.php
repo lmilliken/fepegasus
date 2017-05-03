@@ -55,7 +55,7 @@ function showProposal(str) {
 	//$('#txtHint').text(str)
 	$lastName = document.getElementById('rLastName').textContent;
 	$firstName = document.getElementById('rFirstName').textContent;
-	$remail = document.getElementById('rEmailAddress').textContent;
+	$rEmail = document.getElementById('rEmailAddress').textContent;
 	$thisProposal = $("#proposals option:selected").html();
 
     if (str == "") {
@@ -74,7 +74,7 @@ function showProposal(str) {
                 document.getElementById("txtHint").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET","getThisProposal.php?pemail="+str + "&proposal=" + $thisProposal,true);
+        xmlhttp.open("GET","getThisProposal.php?pemail="+str + "&proposal=" + $thisProposal +"&lname=" + $lastName + "&fname=" + $firstName   + "&remail=" + $rEmail,true);
         //+"&lname=" + $lastName + "&fname=" + $firstName   + "&remail=" + $rEmail
         xmlhttp.send();
     }
@@ -126,7 +126,7 @@ $(document).ready(function(){
             $("#ProfileLink").val("http://network.futureearth.org/network/members/profile?UserKey=" + result.ContactKey)
             $("#reviewer").append(result.LastName + ', ' + result.FirstName)
             
-            $("#EmailAddress").text(result.EmailAddress)
+            $("#rEmailAddress").text(result.EmailAddress)
             $("#rLastName").text(result.LastName)
             $("#rFirstName").text(result.FirstName)
         },

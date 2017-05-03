@@ -9,9 +9,9 @@ require_once ("db.php");
 
 $pEmail = ($_GET['pemail']);
 
-// $rLastName = ($_GET['lname']);
-// $rFirstName = ($_GET['fname']);
-// $rEmail = ($_GET['remail']);
+$rLastName = ($_GET['lname']);
+$rFirstName = ($_GET['fname']);
+$rEmail = ($_GET['remail']);
 $thisProposal = ($_GET['proposal']);
 
 $query = "SELECT * FROM pegasusapplications WHERE email = '".$pEmail."'";
@@ -39,19 +39,19 @@ echo "</p>";
 
 
 
-// echo '<input name="rlname" value=' . $lastName . '>';
-// echo '<input name="rfname" value=' . $firstName . '>';
-// echo '<input name="remail" value=' . $rEmail . '>';
-echo '<p>' . $thisProposal . '</>';
+echo '<input name="rlname" value=' . $rLastName . '>';
+echo '<input name="rfname" value=' . $rFirstName . '>';
+echo '<input name="remail" value=' . $rEmail . '>';
+echo '<input type=text name="proposal" value= ' . '"' . $thisProposal. '"' . '>';
+
 
 
 echo <<<FORM
 <br>
-<label>Ratings</label>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th class=""></th>
+      <th class="">Ratings</th>
       <th class="">Excellent</th>
       <th class="">Very Good</th>
       <th class="">Good</th>
@@ -122,11 +122,11 @@ Assets (25%)</td>
 
 <br>
 
-<label>Recommendation</label>
+
 <table class="table table-striped">
   <thead>
     <tr>
-      <th class=""></th>
+      <th class="">Recommendation</th>
       <th class="">Highly recommend</th>
       <th class="">Recommend</th>
       <th class="">Do not recommend</th>
@@ -152,7 +152,7 @@ Assets (25%)</td>
 <br>
 <label>Additional comments:</label>
 <br>
-<textarea class="form-control" rows="3"></textarea>
+<input name="comments" class="form-control" rows="3"></textarea>
 <br>
 <center><button type="submit" class="btn btn-primary">Submit</button></center>
 </form>
