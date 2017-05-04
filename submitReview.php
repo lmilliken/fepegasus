@@ -41,6 +41,6 @@ $query = <<< QUERY
 QUERY;
 
 echo $query;
-executeQuery2($query);
+submitReview($query);
 
 ?>

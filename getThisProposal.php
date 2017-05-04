@@ -152,7 +152,7 @@ Assets (25%)</td>
 <br>
 <label>Additional comments:</label>
 <br>
-<input name="comments" class="form-control" rows="3"></textarea>
+<textarea name="comments" class="form-control" rows="3"></textarea>
 <br>
 <center><button type="submit" class="btn btn-primary">Submit</button></center>
 </form>

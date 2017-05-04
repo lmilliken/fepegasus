@@ -15,56 +15,58 @@ function executeQuery($query)
 {
     // call the dbConnect function
 
-    $conn = dbConnect();
+        $conn = dbConnect();
 
-    try
-    {
-        // execute query and assign results to a PDOStatement object
+        try
+        {
+            // execute query and assign results to a PDOStatement object
 
-        $stmt = $conn->query($query);
+            $stmt = $conn->query($query);
 
-        if ($stmt->columnCount() > 0)  // if rows with columns are returned
-            {
+            if ($stmt->columnCount() > 0)  // if rows with columns are returned
+                {
 
-                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);  //retreive the rows as an associative array
+                    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);  //retreive the rows as an associative array
 
-            }
+                }
 
-//Uncomment these 4 lines to display $results
-       
-       // echo '<pre style="font-size:large">';
-       // print_r($results);
-       // echo '</pre>';
-       // die;
+    //Uncomment these 4 lines to display $results
+           
+           // echo '<pre style="font-size:large">';
+           // print_r($results);
+           // echo '</pre>';
+           // die;
+           
+    //call dbDisconnect() method to close the connection
 
+            dbDisconnect($conn);
 
+            return $results;
+        }
+        catch (PDOException $e)
+        {
+            //if execution fails
 
-       
-//call dbDisconnect() method to close the connection
-
-        dbDisconnect($conn);
-
-        return $results;
-    }
-    catch (PDOException $e)
-    {
-        //if execution fails
-
-        dbDisconnect($conn);
-        die ('Query failed: ' . $e->getMessage());
-    }
+            dbDisconnect($conn);
+            die ('Query failed: ' . $e->getMessage());
+        }
 }
 
 
-function executeQuery2($query)
+function submitReview($query)
 {
     // call the dbConnect function
 
     $conn = dbConnect();
 
     $conn->query($query);
+    // if ($conn->query($query) ===TRUE){
+    //     echo "this is working";
+    //     } else
+    //     {echo "Failed: " . "query" . "<br>" ."failed";            }
 
-            }
+    dbDisconnect($conn);    
+}    
 
 function getProposals()
 {
@@ -76,6 +78,7 @@ STR;
 
     return executeQuery($query);
 }
+
 
 function dbDisconnect($conn)
 {
