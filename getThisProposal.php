@@ -8,7 +8,6 @@
 require_once ("db.php");
 
 $pEmail = ($_GET['pemail']);
-
 $rLastName = ($_GET['lname']);
 $rFirstName = ($_GET['fname']);
 $rEmail = ($_GET['remail']);
@@ -39,10 +38,10 @@ echo "</p>";
 
 
 
-echo '<input name="rlname" value=' . $rLastName . '>';
-echo '<input name="rfname" value=' . $rFirstName . '>';
-echo '<input name="remail" value=' . $rEmail . '>';
-echo '<input type=text name="proposal" value= ' . '"' . $thisProposal. '"' . '>';
+echo '<input type="hidden" name="rlname" value=' . $rLastName . '>';
+echo '<input type="hidden" name="rfname" value=' . $rFirstName . '>';
+echo '<input type="hidden" name="remail" value=' . $rEmail . '>';
+echo '<input type="hidden" type=text name="proposal" value= ' . '"' . $thisProposal. '"' . '>';
 
 
 

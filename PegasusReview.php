@@ -13,18 +13,32 @@
 <body>
 
 <div class="container">
+<br>
 
 <label id="reviewer">Reviewer: </label>
 <br>
-<label id="rEmailAddress"></label><label id="rLastName"></label><label id="rFirstName"></label>
+<label style="display:none" id="rEmailAddress"></label><label style="display:none"id="rLastName"></label><label style="display:none" id="rFirstName"></label>
+<br>
+
+    <?php
+    
+    if(isset($_GET['reviewedProposal'])){
+
+        $proposal = $_GET['reviewedProposal'];
+        echo '<p style="color: red; text-align:center">Thank you for submitting you review of "' .$proposal .'".  Please select another proposal to review.</p>'  ;  
+        
+        }
+
+    ?>
+
 <br>
 <label>Completed reviews:</label>
 <br>
-<div id="reviewedProposals" style="margin-left: 15px">
+<div id="reviewedProposals" style="margin-left: 30px">
     <p id ="aReviewedProposal"></p>
 </div>
 
-
+<br>
 <label>Please choose a proposal to review</label>
 <br>
 
