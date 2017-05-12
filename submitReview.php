@@ -43,4 +43,7 @@ QUERY;
 echo $query;
 submitReview($query);
 
+header('Location: PegasusReview.php?reviewedProposal=' .$proposal.'' );
+
+
 ?>
