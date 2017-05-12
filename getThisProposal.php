@@ -20,17 +20,17 @@ $result = executeQuery($query);
 
 echo '<p>';
 
-echo '<form method="post" onsubmit="submitReview()" action="submitReview.php">';
+echo '<form method="post" onsubmit=submitReview() action="submitReview.php">';
 foreach ($result as $proposal)
               {
                   extract($proposal); //extract the array elements
-                  echo  '<label>Proposal</label><br>';
-                  echo '<strong><a target="_blank" href="' .$profilelink . '">' . $lastname . ', ' . $firstname . '</a></strong>'. ': ';
+                  echo  '<label >Proposal</label><br>';
+                  echo '<strong style="padding-left: 8px"><a target="_blank" href="' .$profilelink . '">' . $lastname . ', ' . $firstname . '</a></strong>'. ': ';
                   echo  '<a target="_blank" href="' .$proposal . '">' . $proposaltitle . '</a> ';
                   echo '<br>';
+                  echo '<p strong style="padding-left: 8px">';
                   echo $hostinstitution . ', ' . $hostcountry ;
-
-                  echo '<br>';
+                  echo '</p>';
               };
 
 echo "</p>";

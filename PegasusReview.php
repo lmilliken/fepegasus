@@ -31,14 +31,8 @@
 
     ?>
 
-<br>
-<label>Completed reviews:</label>
-<br>
-<div id="reviewedProposals" style="margin-left: 30px">
-    <p id ="aReviewedProposal"></p>
-</div>
 
-<br>
+
 <label>Please choose a proposal to review</label>
 <br>
 
@@ -59,6 +53,15 @@
 <div style="border: 2px solid red; border-radius: 5px; padding: 10px">
 	<div id="txtHint"><center><p>Proposal information and review form will be listed here...</p></center></div>
 </div>
+
+<br>
+<br>
+<label>Completed reviews:</label>
+<br>
+<div id="reviewedProposals" style="margin-left: 30px">
+    <p id ="aReviewedProposal"></p>
+</div>
+
 </div>
 
 
@@ -100,7 +103,7 @@ function submitReview(){
 	// $proposal = document.getElementById($user).innerHTML;
 	// document.getElementById("txtHint").innerHTML = "Thank you for submitting your review of &quot;"  + $proposal + "&quot;, please select another proposal to review.";
 
-	if (window.XMLHttpRequest) {
+/*	if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
         } else {
@@ -115,7 +118,7 @@ function submitReview(){
             }
         };
         xmlhttp.open("POST","submitReview.php",true);
-        xmlhttp.send();
+        xmlhttp.send();*/
 
 }
 

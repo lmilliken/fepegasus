@@ -43,7 +43,17 @@ QUERY;
 echo $query;
 submitReview($query);
 
-// header('Location: PegasusReview.php?reviewedProposal=' .$proposal.'' );
+//header('Location: PegasusReview.php?reviewedProposal=' .$proposal.'' );
 
 
+// echo <<<JAVA
+//  <script type="text/javascript">
+//             location.replace("PegasusReview.php?reviewedProposal=somepreopos")</script>';
+            
+// JAVA;
+
+
+echo '<script type="text/javascript">
+            location.replace("PegasusReview.php?reviewedProposal=' .$proposal . '")</script>';
+            
 ?>
