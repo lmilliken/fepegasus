@@ -17,9 +17,16 @@
 <label id="reviewer">Reviewer: </label>
 <br>
 <label id="rEmailAddress"></label><label id="rLastName"></label><label id="rFirstName"></label>
+
 <br>
+
 <label>Completed reviews:</label>
 <br>
+
+<div id="reviewedProposals" style="margin-left: 15px">
+    <p id ="aReviewedProposal"></p>
+</div>
+
 <br>
 <br>
 <br>
@@ -50,7 +57,7 @@
 
 <script type="text/javascript">
 
-function showProposal(str) {
+function showProposal(thisProposal) {
 
 	//$('#txtHint').text(str)
 	$lastName = document.getElementById('rLastName').textContent;
@@ -58,10 +65,14 @@ function showProposal(str) {
 	$rEmail = document.getElementById('rEmailAddress').textContent;
 	$thisProposal = $("#proposals option:selected").html();
 
+/*Proposal information and review form will be listed here...*/
     if (str == "") {
-        document.getElementById("txtHint").innerHTML = "Proposal information and review form will be listed here...";
+        document.getElementById("txtHint").innerHTML = "tacos";
         return;
-    } else { 
+    } else {document.getElementById("txtHint").innerHTML = "carbs";}    
+
+
+/*{ 
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
@@ -77,8 +88,30 @@ function showProposal(str) {
         xmlhttp.open("GET","getThisProposal.php?pemail="+str + "&proposal=" + $thisProposal +"&lname=" + $lastName + "&fname=" + $firstName   + "&remail=" + $rEmail,true);
         //+"&lname=" + $lastName + "&fname=" + $firstName   + "&remail=" + $rEmail
         xmlhttp.send();
-    }
+    }*/
+
 }
+
+function showReviewedProposals(email) {
+
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("aReviewedProposal").innerHTML = this.responseText;
+            }
+        };
+
+        xmlhttp.open("GET","getMyReviews.php?remail="+email,true);
+        //+"&lname=" + $lastName + "&fname=" + $firstName   + "&remail=" + $rEmail
+        xmlhttp.send();
+    }
+
 
 function submitReview(){
 	// $user = document.getElementById("proposals").value
@@ -109,6 +142,7 @@ function submitReview(){
 
 
 $(document).ready(function(){
+
 	$.ajax({
         type: 'GET',
         url: 'https://api.connectedcommunity.org/api/v2.0/Contacts/GetWhoAmI',
@@ -129,11 +163,21 @@ $(document).ready(function(){
             $("#rEmailAddress").text(result.EmailAddress)
             $("#rLastName").text(result.LastName)
             $("#rFirstName").text(result.FirstName)
+
+
+            $email =  document.getElementById('rEmailAddress').innerHTML;
+            //document.getElementById("aReviewedProposal").innerHTML = $email;
+
+            showReviewedProposals($email);
+
         },
         error: function (error) {
             alert('Call failed.');
         }
    });
+
+
+
 });
 
 </script>
