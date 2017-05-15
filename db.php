@@ -23,6 +23,8 @@ function executeQuery($query)
 
             $stmt = $conn->query($query);
 
+
+
             if ($stmt->columnCount() > 0)  // if rows with columns are returned
                 {
 
@@ -73,7 +75,7 @@ function getProposals()
     $query = <<<STR
 Select *
 From pegasusapplications
-Order by lastname
+Order by proposalid
 STR;
 
     return executeQuery($query);

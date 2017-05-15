@@ -25,7 +25,7 @@
     if(isset($_GET['reviewedProposal'])){
 
         $proposal = $_GET['reviewedProposal'];
-        echo '<p style="color: red; text-align:center">Thank you for submitting you review of "' .$proposal .'".  Please select another proposal to review.</p>'  ;  
+        echo '<p style="color: red; text-align:center">Thank you for submitting your review of "' .$proposal .'".  Please select another proposal to review.</p>'  ;  
         
         }
 
@@ -36,7 +36,7 @@
 <label>Please choose a proposal to review</label>
 <br>
 
- <select style="max-width: 500px" onchange="showProposal(this.value)" class="form-control" name="proposals" id="proposals">
+ <select style="max-width: 500px" onchange="showProposal()" class="form-control" name="proposals" id="proposals">
       <option  value=""></option>
           <?php
           	require_once ("db.php");
@@ -44,7 +44,7 @@
               foreach ($proposals as $aProposal)
               {
                   extract($aProposal); //extract the array elements
-                  echo '<option id ="'. $email. '" value="'. $email. '">' . $lastname . ', ' . $firstname . ': ' . $proposaltitle .  '</option>';
+                  echo '<option value="'. $proposalid. '">' . $proposalid. '. ' . $lastname . ', ' . $firstname . ': ' . $proposaltitle .  '</option>';
               }
           ?>
    </select>
@@ -74,7 +74,10 @@ function showProposal(str) {
 	$lastName = document.getElementById('rLastName').textContent;
 	$firstName = document.getElementById('rFirstName').textContent;
 	$rEmail = document.getElementById('rEmailAddress').textContent;
-	$thisProposal = $("#proposals option:selected").html();
+
+    var dropdown = document.getElementById('proposals');
+
+    var proposalid =  dropdown.options[dropdown.selectedIndex].value;
 
     if (str == "") {
         document.getElementById("txtHint").innerHTML = "Proposal information and review form will be listed here...";
@@ -92,7 +95,7 @@ function showProposal(str) {
                 document.getElementById("txtHint").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET","getThisProposal.php?pemail="+str + "&proposal=" + $thisProposal +"&lname=" + $lastName + "&fname=" + $firstName   + "&remail=" + $rEmail,true);
+        xmlhttp.open("GET","getThisProposal.php?proposalid="+proposalid + "&lname=" + $lastName + "&fname=" + $firstName   + "&remail=" + $rEmail,true);
         //+"&lname=" + $lastName + "&fname=" + $firstName   + "&remail=" + $rEmail
         xmlhttp.send();
     }

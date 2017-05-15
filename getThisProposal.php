@@ -7,33 +7,35 @@
 
 require_once ("db.php");
 
-$pEmail = ($_GET['pemail']);
 $rLastName = ($_GET['lname']);
 $rFirstName = ($_GET['fname']);
 $rEmail = ($_GET['remail']);
-$thisProposal = ($_GET['proposal']);
+$proposalid = ($_GET['proposalid']);
 
-$query = "SELECT * FROM pegasusapplications WHERE email = '".$pEmail."'";
+
+$query = "SELECT * FROM pegasusapplications WHERE proposalid = '".$proposalid."'";
 
 $result = executeQuery($query);
 
 
-echo '<p>';
 
 echo '<form method="post" onsubmit=submitReview() action="submitReview.php">';
+echo  '<label >Proposal</label><br>';
 foreach ($result as $proposal)
               {
                   extract($proposal); //extract the array elements
-                  echo  '<label >Proposal</label><br>';
+
                   echo '<strong style="padding-left: 8px"><a target="_blank" href="' .$profilelink . '">' . $lastname . ', ' . $firstname . '</a></strong>'. ': ';
-                  echo  '<a target="_blank" href="' .$proposal . '">' . $proposaltitle . '</a> ';
+                  echo  '<a target="_blank" href="' .$proposallink . '">' . $proposaltitle . '</a> ';
                   echo '<br>';
                   echo '<p strong style="padding-left: 8px">';
                   echo $hostinstitution . ', ' . $hostcountry ;
                   echo '</p>';
+                  echo '<input type="hidden" name="proposalid" value=' . $proposalid . '>';
+                  echo '<input type="hidden" name="proposal" value="' .  $lastname . ', ' . $firstname . ': ' . $proposaltitle . '">';
+
               };
 
-echo "</p>";
 
 
 
@@ -41,8 +43,6 @@ echo "</p>";
 echo '<input type="hidden" name="rlname" value=' . $rLastName . '>';
 echo '<input type="hidden" name="rfname" value=' . $rFirstName . '>';
 echo '<input type="hidden" name="remail" value=' . $rEmail . '>';
-echo '<input type="hidden" type=text name="proposal" value= ' . '"' . $thisProposal. '"' . '>';
-
 
 
 echo <<<FORM

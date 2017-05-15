@@ -6,6 +6,7 @@ require_once ("db.php");
 $rLastName =  $_POST["rlname"];
 $rFirstName = $_POST["rfname"];
 $rEmail = $_POST["remail"];
+$proposalid = $_POST["proposalid"];
 $proposal =   $_POST["proposal"];
 $technical = $_POST["technical-execellence-feasbility"]; 
 $interdisciplinary = $_POST["interdisciplinary"]; 
@@ -22,14 +23,16 @@ echo $rEmail;
 echo '<br>';
 echo $proposal;
 echo '<br>';
+echo $proposalid;
 
 
 $query = <<< QUERY
-	INSERT INTO pegasusreview (reviewerlname, reviewerfname, revieweremail, proposal, technical, interdisciplinary, potential, recommend, comments, submittime) 
+	INSERT INTO pegasusreview (reviewerlname, reviewerfname, revieweremail, proposalfk, proposal, technical, interdisciplinary, potential, recommend, comments, submittime) 
 	VALUES (
 		"$rLastName", 
 		"$rFirstName",
 		"$rEmail",
+		"$proposalid",
 		"$proposal",
 		"$technical",
 		"$interdisciplinary",
