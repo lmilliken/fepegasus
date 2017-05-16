@@ -13,7 +13,7 @@ $interdisciplinary = $_POST["interdisciplinary"];
 $potential = $_POST["potential"];
 $recommend = $_POST["recommendation"];
 $comments =  $_POST["comments"];
-$date = date('Y-m-d');
+$date = date('Y-m-d H:i:s T');
 
 echo $rLastName;
 echo '<br>';
@@ -44,19 +44,9 @@ $query = <<< QUERY
 QUERY;
 
 echo $query;
-submitReview($query);
+// submitReview($query);
 
-//header('Location: PegasusReview.php?reviewedProposal=' .$proposal.'' );
-
-
-// echo <<<JAVA
-//  <script type="text/javascript">
-//             location.replace("PegasusReview.php?reviewedProposal=somepreopos")</script>';
-            
-// JAVA;
-
-
-echo '<script type="text/javascript">
-            location.replace("PegasusReview.php?reviewedProposal=' .$proposal . '")</script>';
+// echo '<script type="text/javascript">
+//             location.replace("PegasusReview.php?reviewedProposal=' .$proposal . '")</script>';
             
 ?>

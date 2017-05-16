@@ -19,7 +19,7 @@ $proposals = executequery($query);
 foreach ($proposals as $aProposal)
   {
       extract($aProposal); //extract the array elements
-      echo '<a target="_blank" href="reviewedProposal?proposal=' .$proposalfk . '">' . $proposalfk . '. ' . $proposal . '</a>';
+      echo '<a target="_blank" href="reviewedProposal.php?reviewid=' .$reviewid . '">' . $proposalfk . '. ' . $proposal . '</a>';
       echo '<br>';
   };
 
