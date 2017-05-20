@@ -15,15 +15,23 @@
 
 
 <div class="container">
-<a href="PegasusReview.php">&lt;&lt;Back</a>
+<br>
+<br>
+<a href="PegasusReview.php">&lt;&lt;&nbspBack</a>
+<br>
+<br>
+<div style="border: 2px solid red; border-radius: 5px; padding: 10px">
 <?php
 require_once ("db.php");
 
 $reviewID = ($_GET['reviewid']);
-echo $reviewID;
+//echo $reviewID;
 
-$query = "SELECT * FROM pegasusreview WHERE reviewid = ".$reviewID;
-echo $query;
+$query = "SELECT * FROM pegasusreview 
+left join pegasusapplications on pegasusapplications.proposalid = pegasusreview.proposalfk
+where reviewid = " . $reviewID;
+
+//echo $query;
 $result = executeQuery($query);
 
 if (count($result)<>1){
@@ -33,6 +41,23 @@ if (count($result)<>1){
         {foreach ($result as $proposal)
              {extract($proposal);
                 echo '<form method="post" action="submitReview.php">';
+                  echo '<label>Reviewer: '. $reviewerlname . ', ' . $reviewerfname. '</label>';
+                  echo '<br><br>';
+                  echo '<label>Proposal:</label><br>';
+                  echo '<strong style="padding-left: 8px"><a target="_blank" href="' .$profilelink . '">' . $lastname . ', ' . $firstname . '</a></strong>'. ': ';
+                  echo  '<a target="_blank" href="' .$proposallink . '">' . $proposaltitle . '</a> ';
+                  echo '<br>';
+                  echo '<p strong style="padding-left: 8px">';
+                  echo $hostinstitution . ', ' . $hostcountry ;
+                  echo '</p>';
+                  
+
+                  echo '<input type="hidden" name="reviewid" value=' . $reviewID . '>';
+                  echo '<input type="hidden" name="proposal" value="' .  $lastname . ', ' . $firstname . ': ' . $proposaltitle . '">';
+                  // echo '<input type="hidden" name="rlname" value=' . $rLastName . '>';
+                  // echo '<input type="hidden" name="rfname" value=' . $rFirstName . '>';
+                  // echo '<input type="hidden" name="remail" value=' . $rEmail . '>';
+
                 echo <<<FORM
                 <br>
                 <table class="table table-striped">
@@ -201,13 +226,16 @@ FORM;
                 echo $comments;
         echo '</textarea>
         <br>
-        <center><button type="submit" class="btn btn-primary">Update</button></center>
+        <center>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <button class="btn btn-default" onclick="PegasusReview.php">Cancel</button>
+        </center>
         </form>';
         };//foreach
     };//else
 
 ?>
-
+</div>
 </div>
 </body>
 </html>

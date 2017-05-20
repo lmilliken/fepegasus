@@ -23,11 +23,12 @@
     <?php
     
     if(isset($_GET['reviewedProposal'])){
-
+        $type = $_GET['type'];
         $proposal = $_GET['reviewedProposal'];
-        echo '<p style="color: red; text-align:center">Thank you for submitting your review of "' .$proposal .'".  Please select another proposal to review.</p>'  ;  
+        echo '<p style="color: red; text-align:center">Thank you for ' .$type. ' your review of "' .$proposal .'".  Please select another proposal to review.</p>'  ;  
         
         }
+        
 
     ?>
 

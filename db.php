@@ -62,10 +62,11 @@ function submitReview($query)
     $conn = dbConnect();
 
     $conn->query($query);
+
     // if ($conn->query($query) ===TRUE){
     //     echo "this is working";
     //     } else
-    //     {echo "Failed: " . "query" . "<br>" ."failed";            }
+    //     {echo "FAILED: " . $query . "<br>";}
 
     dbDisconnect($conn);    
 }    
