@@ -35,7 +35,7 @@ if (isset($_POST["reviewid"]))
 		potential =	"$potential",
 		recommend = "$recommend",
 		comments = "$comments",
-		submittime = "$date,'%Y%M%d'"
+		submittime = "$date,'%Y%M%d%T:%f'"
 	Where reviewid = "$reviewID"
 QUERY;
 }
@@ -60,7 +60,7 @@ else
 		"$potential",
 		"$recommend",
 		"$comments",
-		"$date,'%Y%M%d'"
+		"$date,'%Y%M%d%T:%f'"
 		)
 QUERY;
 };
@@ -69,7 +69,7 @@ QUERY;
 echo $query;
 submitReview($query);
 
-// echo '<script type="text/javascript">
-//             location.replace("PegasusReview.php?type='.$submittype . '&reviewedProposal=' .$proposal . '")</script>';
+echo '<script type="text/javascript">
+            location.replace("PegasusReview.php?type='.$submittype . '&reviewedProposal=' .$proposal . '")</script>';
             
 ?>

@@ -228,7 +228,7 @@ FORM;
         <br>
         <center>
             <button type="submit" class="btn btn-primary">Update</button>
-            <button class="btn btn-default" onclick="PegasusReview.php">Cancel</button>
+            <a href="pegasusreview.php"> Cancel</a>
         </center>
         </form>';
         };//foreach
