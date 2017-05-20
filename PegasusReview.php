@@ -57,12 +57,34 @@
 
 <br>
 <br>
-<label>Completed reviews:</label>
+<label>My completed reviews:</label>
 <br>
 <div id="reviewedProposals" style="margin-left: 30px">
     <p id ="aReviewedProposal"></p>
 </div>
 
+<br>
+<br>
+<label>All proposals:</label>
+<br>
+<div style="margin-left: 30px">
+          <?php
+            require_once ("db.php");
+            $proposals = getProposals();
+              foreach ($proposals as $aProposal)
+              {
+                  extract($aProposal); //extract the array elements
+                  echo $proposalid . '. ';
+                  echo '<strong><a target="_blank" href="'.$profilelink.'">' . $lastname . ', ' . $firstname . '</a></strong>';
+                  echo ': ';
+                  echo '<a target="_blank" href="'.$proposallink.'">' . $proposaltitle . '</a>';
+                  echo '<br>';
+              }
+          ?>
+</div>
+
+<br>
+<br>
 </div>
 
 
@@ -80,7 +102,7 @@ function showProposal(str) {
 
     var proposalid =  dropdown.options[dropdown.selectedIndex].value;
 
-    if (str == "") {
+    if (proposalid == "") {
         document.getElementById("txtHint").innerHTML = "Proposal information and review form will be listed here...";
         return;
     } else { 

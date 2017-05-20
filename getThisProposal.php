@@ -25,10 +25,9 @@ foreach ($result as $proposal)
               {
                   extract($proposal); //extract the array elements
 
-                  echo '<strong style="padding-left: 8px"><a target="_blank" href="' .$profilelink . '">' . $lastname . ', ' . $firstname . '</a></strong>'. ': ';
-                  echo  '<a target="_blank" href="' .$proposallink . '">' . $proposaltitle . '</a> ';
-                  echo '<br>';
-                  echo '<p strong style="padding-left: 8px">';
+                  echo '<p style="padding-left: 8px">'. $proposalid . '.&nbsp;<strong><a target="_blank" href="' .$profilelink . '">' . $lastname . ', ' . $firstname . '</a></strong>'. ': ';
+                  echo  '<a target="_blank" href="' .$proposallink . '">' . $proposaltitle . '</a>';
+                  echo '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
                   echo $hostinstitution . ', ' . $hostcountry ;
                   echo '</p>';
                   echo '<input type="hidden" name="proposalid" value=' . $proposalid . '>';
@@ -153,7 +152,8 @@ Assets (25%)</td>
 <br>
 <textarea name="comments" class="form-control" rows="3"></textarea>
 <br>
-<center><button type="submit" class="btn btn-primary">Submit</button></center>
+<center><button type="submit" class="btn btn-primary">Submit</button>
+  <a href="pegasusreview.php"> Cancel</a>
 </form>
 FORM;
 
