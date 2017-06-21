@@ -25,13 +25,10 @@ foreach ($result as $proposal)
               {
                   extract($proposal); //extract the array elements
 
-                  echo '<p style="padding-left: 8px">'. $proposalid . '.&nbsp;<strong><a target="_blank" href="' .$profilelink . '">' . $lastname . ', ' . $firstname . '</a></strong>'. ': ';
-                  echo  '<a target="_blank" href="' .$proposallink . '">' . $proposaltitle . '</a>';
-                  echo '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-                  echo $hostinstitution . ', ' . $hostcountry ;
+                  echo '<p style="padding-left: 8px">'. $proposalid . '.&nbsp;<strong><a target="_blank" href="' .$profilelink . '">' . $lastname . ', ' . $firstname . '</a></strong>, '. $hostinstitution . ', ' . $hostcountry ;
                   echo '</p>';
                   echo '<input type="hidden" name="proposalid" value=' . $proposalid . '>';
-                  echo '<input type="hidden" name="proposal" value="' .  $lastname . ', ' . $firstname . ': ' . $proposaltitle . '">';
+                  echo '<input type="hidden" name="proposal" value="' .  $lastname . ', ' . $firstname . '">';
 
               };
 
@@ -62,7 +59,7 @@ echo <<<FORM
  <tr class="odd">
   <td class="">The technical excellence and feasibility of planning and executing the Research Plan within the proposed budget and time constraints (50%)</td>
     <td class="">
-    <input type="radio" id="technical-execellence-feasbility" name="technical-execellence-feasbility" value="10" class="form-radio" ></td>
+    <input required type="radio" id="technical-execellence-feasbility" name="technical-execellence-feasbility" value="10" class="form-radio" ></td>
     
     <td class="">
     <input type="radio" id="technical-execellence-feasbility" name="technical-execellence-feasbility" value="8" class="form-radio" ></td>
@@ -81,7 +78,7 @@ echo <<<FORM
  <tr class="even">
  <td class="">The interdisciplinary design and strength of the team, depth and breadth of collaboration across disciplines, countries, and sectors of society (25%)</td>
     <td class="">
-    <input type="radio" id="interdisciplinary" name="interdisciplinary"" value="5" class="form-radio" ></td>
+    <input required type="radio" id="interdisciplinary" name="interdisciplinary"" value="5" class="form-radio" ></td>
     
     <td class="">
     <input type="radio" id="interdisciplinary" name="interdisciplinary" value="4" class="form-radio"></td>
@@ -100,7 +97,7 @@ echo <<<FORM
  <td class="">The potential for the research to lead to significant advances within the thematic areas outlined above and relevance to the Future Earth Vison and Key Challenge on Natural
 Assets (25%)</td>
     <td class="">
-    <input type="radio" id="potential" name="potential" value="5" class="form-radio" ></td>
+    <input required type="radio" id="potential" name="potential" value="5" class="form-radio" ></td>
     
     <td class="">
     <input type="radio" id="potential" name="potential" value="4" class="form-radio"></td>
@@ -135,7 +132,7 @@ Assets (25%)</td>
  <tr class="odd">
   <td class="">Would you recommend this proposal for funding?</td>
     <td class="">
-    <input type="radio" id="recommendation" name="recommendation" value="3" class="form-radio" ></td>
+    <input required type="radio" id="recommendation" name="recommendation" value="3" class="form-radio" ></td>
     
     <td class="">
     <input type="radio" id="recommendation" name="recommendation" value="2" class="form-radio"></td>
@@ -153,7 +150,7 @@ Assets (25%)</td>
 <textarea name="comments" class="form-control" rows="3"></textarea>
 <br>
 <center><button type="submit" class="btn btn-primary">Submit</button>
-  <a href="pegasusreview.php"> Cancel</a>
+  <a href="PegasusReview.php"> Cancel</a>
 </form>
 FORM;
 

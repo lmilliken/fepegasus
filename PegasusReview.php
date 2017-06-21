@@ -45,7 +45,7 @@
               foreach ($proposals as $aProposal)
               {
                   extract($aProposal); //extract the array elements
-                  echo '<option value="'. $proposalid. '">' . $proposalid. '. ' . $lastname . ', ' . $firstname . ': ' . $proposaltitle .  '</option>';
+                  echo '<option value="'. $proposalid. '">' . $proposalid. '. ' . $lastname . ', ' . $firstname . '</option>';
               }
           ?>
    </select>
@@ -76,8 +76,6 @@
                   extract($aProposal); //extract the array elements
                   echo $proposalid . '. ';
                   echo '<strong><a target="_blank" href="'.$profilelink.'">' . $lastname . ', ' . $firstname . '</a></strong>';
-                  echo ': ';
-                  echo '<a target="_blank" href="'.$proposallink.'">' . $proposaltitle . '</a>';
                   echo '<br>';
               }
           ?>

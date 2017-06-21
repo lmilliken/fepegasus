@@ -66,7 +66,7 @@ QUERY;
 };
 
 
-echo $query;
+// echo $query;
 submitReview($query);
 
 echo '<script type="text/javascript">

@@ -41,14 +41,10 @@ if (count($result)<>1){
         {foreach ($result as $proposal)
              {extract($proposal);
                 echo '<form method="post" action="submitReview.php">';
-                  echo '<label>Reviewer: '. $reviewerlname . ', ' . $reviewerfname. '</label>';
+                  echo '<label>Reviewer: ' . $reviewerlname . ', ' . $reviewerfname. '</label>';
                   echo '<br><br>';
                   echo '<label>Proposal:</label><br>';
-                  echo '<strong style="padding-left: 8px"><a target="_blank" href="' .$profilelink . '">' . $lastname . ', ' . $firstname . '</a></strong>'. ': ';
-                  echo  '<a target="_blank" href="' .$proposallink . '">' . $proposaltitle . '</a> ';
-                  echo '<br>';
-                  echo '<p strong style="padding-left: 8px">';
-                  echo $hostinstitution . ', ' . $hostcountry ;
+                  echo "&nbsp&nbsp" .$proposalid .'. ' .'<strong ><a target="_blank" href="' .$profilelink . '">'  .  $lastname . ', ' . $firstname . '</a></strong>'. ' ,' . $hostinstitution . ', ' . $hostcountry ;
                   echo '</p>';
                   
 
@@ -76,7 +72,7 @@ if (count($result)<>1){
                  <tr class="odd">
                   <td class="">The technical excellence and feasibility of planning and executing the Research Plan within the proposed budget and time constraints (50%)</td>
                     <td class="">
-                    <input type="radio" id="technical-execellence-feasbility" name="technical-execellence-feasbility" value="10" class="form-radio" 
+                    <input required type="radio" id="technical-execellence-feasbility" name="technical-execellence-feasbility" value="10" class="form-radio" 
 FORM;
                     if ($technical==10){echo "checked";}
 
@@ -113,7 +109,7 @@ FORM;
         <tr class="even">
         <td class="">The interdisciplinary design and strength of the team, depth and breadth of collaboration across disciplines, countries, and sectors of society (25%)</td>
             <td class="">
-            <input type="radio" id="interdisciplinary" name="interdisciplinary"" value="5" class="form-radio"';
+            <input required type="radio" id="interdisciplinary" name="interdisciplinary"" value="5" class="form-radio"';
                     if ($interdisciplinary==5){echo "checked";}
 
         echo '></td>
@@ -147,7 +143,7 @@ FORM;
          <td class="">The potential for the research to lead to significant advances within the thematic areas outlined above and relevance to the Future Earth Vison and Key Challenge on Natural
         Assets (25%)</td>
             <td class="">
-            <input type="radio" id="potential" name="potential" value="5" class="form-radio"';
+            <input required type="radio" id="potential" name="potential" value="5" class="form-radio"';
                     if ($potential==5){echo "checked";}
 
         echo '></td>
@@ -197,7 +193,7 @@ FORM;
          <tr class="odd">
           <td class="">Would you recommend this proposal for funding?</td>
             <td class="">
-            <input type="radio" id="recommendation" name="recommendation" value="3" class="form-radio"';
+            <input required type="radio" id="recommendation" name="recommendation" value="3" class="form-radio"';
 
                     if ($recommend==3){echo "checked";}
 
@@ -228,7 +224,7 @@ FORM;
         <br>
         <center>
             <button type="submit" class="btn btn-primary">Update</button>
-            <a href="pegasusreview.php"> Cancel</a>
+            <a href="PegasusReview.php"> Cancel</a>
         </center>
         </form>';
         };//foreach
