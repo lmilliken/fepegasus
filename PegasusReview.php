@@ -57,7 +57,7 @@
 
 <br>
 <br>
-<label>My completed reviews:</label>
+<label>My completed reviews (click to edit):</label>
 <br>
 <div id="reviewedProposals" style="margin-left: 30px">
     <p id ="aReviewedProposal"></p>
@@ -75,7 +75,7 @@
               {
                   extract($aProposal); //extract the array elements
                   echo $proposalid . '. ';
-                  echo '<strong><a target="_blank" href="'.$profilelink.'">' . $lastname . ', ' . $firstname . '</a></strong>';
+                  echo '<strong><a target="_blank" href="'.$profilelink.'">' . $lastname . ', ' . $firstname . '</a></strong>'. ' (<a target="_blank" href="'.$proposallink.'">proposal</a>), ';
                   echo '<br>';
               }
           ?>

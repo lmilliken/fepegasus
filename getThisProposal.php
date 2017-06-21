@@ -25,7 +25,7 @@ foreach ($result as $proposal)
               {
                   extract($proposal); //extract the array elements
 
-                  echo '<p style="padding-left: 8px">'. $proposalid . '.&nbsp;<strong><a target="_blank" href="' .$profilelink . '">' . $lastname . ', ' . $firstname . '</a></strong>, '. $hostinstitution . ', ' . $hostcountry ;
+                  echo '<p style="padding-left: 8px">'. $proposalid . '.&nbsp;<strong><a target="_blank" href="' .$profilelink . '">' . $lastname . ', ' . $firstname . '</a></strong> (<a target="_blank" href="'.$proposallink.'">proposal</a>), '. $hostinstitution . ', ' . $hostcountry ;
                   echo '</p>';
                   echo '<input type="hidden" name="proposalid" value=' . $proposalid . '>';
                   echo '<input type="hidden" name="proposal" value="' .  $lastname . ', ' . $firstname . '">';

@@ -44,12 +44,12 @@ if (count($result)<>1){
                   echo '<label>Reviewer: ' . $reviewerlname . ', ' . $reviewerfname. '</label>';
                   echo '<br><br>';
                   echo '<label>Proposal:</label><br>';
-                  echo "&nbsp&nbsp" .$proposalid .'. ' .'<strong ><a target="_blank" href="' .$profilelink . '">'  .  $lastname . ', ' . $firstname . '</a></strong>'. ' ,' . $hostinstitution . ', ' . $hostcountry ;
+                  echo "&nbsp&nbsp" .$proposalid .'. ' .'<strong ><a target="_blank" href="' .$profilelink . '">'  .  $lastname . ', ' . $firstname . '</a></strong> (<a target="_blank" href="'.$proposallink.'">proposal</a>), '.  $hostinstitution . ', ' . $hostcountry ;
                   echo '</p>';
                   
 
                   echo '<input type="hidden" name="reviewid" value=' . $reviewID . '>';
-                  echo '<input type="hidden" name="proposal" value="' .  $lastname . ', ' . $firstname . ': ' . $proposaltitle . '">';
+                  echo '<input type="hidden" name="proposal" value="' .  $lastname . ', ' . $firstname .'">';
                   // echo '<input type="hidden" name="rlname" value=' . $rLastName . '>';
                   // echo '<input type="hidden" name="rfname" value=' . $rFirstName . '>';
                   // echo '<input type="hidden" name="remail" value=' . $rEmail . '>';
