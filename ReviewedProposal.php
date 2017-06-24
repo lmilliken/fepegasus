@@ -200,14 +200,14 @@ FORM;
         echo '></td>
             
             <td class="">
-            <input type="radio" id="recommendation" name="recommendation" value="2" class="form-radio"';
-                    if ($recommend==2){echo "checked";}
+            <input type="radio" id="recommendation" name="recommendation" value="1" class="form-radio"';
+                    if ($recommend==1){echo "checked";}
 
         echo '></td>
             
             <td class="">
-            <input type="radio" id="recommendation" name="recommendation" value="1" class="form-radio"';
-                   if ($recommend==1){echo "checked";}
+            <input type="radio" id="recommendation" name="recommendation" value="0" class="form-radio"';
+                   if ($recommend==0){echo "checked";}
 
         echo '></td>
 

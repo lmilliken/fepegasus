@@ -135,10 +135,10 @@ Assets (25%)</td>
     <input required type="radio" id="recommendation" name="recommendation" value="3" class="form-radio" ></td>
     
     <td class="">
-    <input type="radio" id="recommendation" name="recommendation" value="2" class="form-radio"></td>
+    <input type="radio" id="recommendation" name="recommendation" value="1" class="form-radio"></td>
     
     <td class="">
-    <input type="radio" id="recommendation" name="recommendation" value="1" class="form-radio"></td>
+    <input type="radio" id="recommendation" name="recommendation" value="0" class="form-radio"></td>
 
   </tr>
 </tbody>
