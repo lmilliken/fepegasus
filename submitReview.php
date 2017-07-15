@@ -8,6 +8,7 @@ $interdisciplinary = $_POST["interdisciplinary"];
 $potential = $_POST["potential"];
 $recommend = $_POST["recommendation"];
 $comments =  $_POST["comments"];
+$comments = str_replace('"', "'", $comments);
 $date = date('Y-m-d H:i:s T');
 
 $submittype;
